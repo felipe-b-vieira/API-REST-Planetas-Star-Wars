@@ -18,6 +18,7 @@ public class PlanetaController {
     @Autowired
     private PlanetasRepository repository;
 
+    //API endpoints
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Planeta> getAllPlanetas() {
         return repository.findAll();
@@ -37,6 +38,7 @@ public class PlanetaController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Planeta createPlaneta(@Valid @RequestBody Planeta Planeta) {
         Planeta.set_id(ObjectId.get());
+        Planeta.setAparicoes(Planeta.getNome());
         repository.save(Planeta);
         return Planeta;
     }

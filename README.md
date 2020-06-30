@@ -7,7 +7,12 @@
  
  Sendo utilizado IntelliJ IDEA para execução, gerando acesso por http://localhost:8080/planetas, podendo ser utilizados GET, POST, PUT e REQUEST.
  
+ IntelliJ IDEA apresenta o erro Could not autowire. No beans of 'PlanetasRepository' type found. Esse erro parece ser apenas identificado pela IDE mas não realmente acontece, possivelmente por causa da configuração do Spring com o comando @RestController.
+ 
  As informações contidas no banco de dados são: Nome, Clima, Terreno e Quantidade de aparições nos filmes(Vai ser atualizada por outra API).
+ 
+ Para fazer requisições POST, é necessário passar Nome, Clima e Terreno. A quantidade de aparições será adiciona automatica com base no nome do Planeta através da API Pública de Star Wars. Caso não encontre um planeta com o mesmo nome, ele irá definir a quantidade como -1.
+ 
  
 # Desafio proposto:
 Nossos associados são aficionados por Star Wars e com isso, queremos criar um jogo com algumas informações da franquia.

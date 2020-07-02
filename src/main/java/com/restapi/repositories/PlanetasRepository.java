@@ -8,4 +8,5 @@ public interface PlanetasRepository  extends MongoRepository<Planeta, String> {
     Planeta findBy_id(ObjectId _id);
     Boolean existsBy_id(ObjectId _id);
     Boolean existsByNome(String nome);
+    Planeta findByNome(String nome);
 }

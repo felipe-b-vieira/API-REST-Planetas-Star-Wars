@@ -26,16 +26,42 @@ public class PlanetaController {
         return repository.findAll();
     }
 
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Planeta getPlanetaById(@PathVariable("id") ObjectId id) {
-        return repository.findBy_id(id);
+    public ResponseEntity<Planeta> getPlanetaById(@PathVariable("id") ObjectId id) {
+        //se encontrar retorna, senão retorna um erro de BAD REQUEST
+        if(repository.existsBy_id(id)){
+            return new ResponseEntity<>(repository.findBy_id(id),HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    //endpoint feito para pesquisar por nome
+    @RequestMapping(value = "/nome/{nome}", method = RequestMethod.GET)
+    public ResponseEntity<Planeta> getPlanetaByNome(@PathVariable("nome") String nome ){
+        //se encontrar retorna, senão retorna um erro de BAD REQUEST
+        if(repository.existsByNome(nome)){
+            return new ResponseEntity<>(repository.findByNome(nome),HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void modifyPlanetaById(@PathVariable("id") ObjectId id, @Valid @RequestBody Planeta Planeta) {
-        Planeta.set_id(id);
-        repository.save(Planeta);
+    public ResponseEntity<Planeta> modifyPlanetaById(@PathVariable("id") ObjectId id, @Valid @RequestBody Planeta Planeta) {
+        //Se existir ele altera e retorna ok, senão retorna bad request
+        if(repository.existsBy_id(id)){
+            Planeta.set_id(id);
+            repository.save(Planeta);
+            return new ResponseEntity<>(Planeta,HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     //usando ResponseEntity para ter um melhor controle do status enviado

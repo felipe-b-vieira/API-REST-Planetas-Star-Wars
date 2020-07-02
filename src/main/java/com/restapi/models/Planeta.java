@@ -17,8 +17,10 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.persistence.Column;
 
 public class Planeta {
     //essa informação precisa para o MongoDB
@@ -26,7 +28,8 @@ public class Planeta {
     private ObjectId _id;
 
 
-    //Informações dos planetas
+    //Informações dos planetas(Nome tem que ser único, essa configuração precisa ser feita no MongoDB também)
+    @Indexed(unique=true)
     private String nome;
     private String clima;
     private String terreno;

@@ -3,9 +3,9 @@
  
  Projeto utilizando Java, Spring e MongoDB.
  
- As configurações de MongoDB estão sendo acessadas localmente. Para a configuração de acesso local precisa utilizar md \data\db após a instalação do MongoDB na máquina para configurar o local de instalação dos bancos.
+ As configurações de MongoDB estão sendo acessadas localmente. Para a configuração de acesso local precisa utilizar md \data\db após a instalação do MongoDB na máquina para configurar o local de instalação dos bancos. Também é necessário definir o nome como um index para poder ser considerado único.
  
- Sendo utilizado IntelliJ IDEA para execução, gerando acesso por http://localhost:8080/planetas, podendo ser utilizados GET, POST, PUT e REQUEST.
+ Sendo utilizado IntelliJ IDEA para execução, gerando acesso por http://localhost:8080/planetas, podendo ser utilizados GET, POST, PUT e DELETE.
  
  IntelliJ IDEA apresenta o erro Could not autowire. No beans of 'PlanetasRepository' type found. Esse erro parece ser apenas identificado pela IDE mas não realmente acontece, possivelmente por causa da configuração do Spring com o comando @RestController.
  
